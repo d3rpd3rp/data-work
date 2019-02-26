@@ -18,8 +18,8 @@
   dbSendQuery(con, "CREATE DATABASE AONEDB;")
   dbSendQuery(con, "USE AONEDB;")
   #credit for the id generation https://programminghistorian.org/en/lessons/getting-started-with-mysql-using-r#create-database
-  dbSendQuery(con, "CREATE TABLE aonetable (id INT NOT NULL AUTO_INCREMENT, date DATE, useless INTEGER, symbol VARCHAR(20), \
-                                                        open FLOAT, high FLOAT, low FLOAT, close FLOAT, PRIMARY KEY (id));")
+  dbSendQuery(con, "CREATE TABLE aonetable (id INT NOT NULL AUTO_INCREMENT, date DATE, open FLOAT, \
+                                            high FLOAT, low FLOAT, close FLOAT, symbol VARCHAR(20), PRIMARY KEY (id));")
   dbSendQuery(con, "GRANT ALL PRIVILEGES ON AONEDB.* TO 'mysqladmin'@'127.0.0.1' IDENTIFIED BY 'mysqladmin';")
   dbDisconnect(con)
 
