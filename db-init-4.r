@@ -29,7 +29,6 @@ for(i in 1:length(file.names)){
   samplerows["V2"] <- NULL
   symbolname <- strsplit(file.names[i], "\\.")[[1]][1]
   symbolname <- strsplit(symbolname, "_")[[1]][2]
-  print(symbolname)
   samplerows$symbol <- rep(symbolname, nrow(samplerows))
   names(samplerows) <- c("date", "open", "high", "low", "close", "volume", "symbol")
   dbWriteTable(con, name="aonetable", samplerows, row.names=FALSE, field.types = NULL, append=TRUE )
