@@ -21,4 +21,23 @@ GROUP BY 'change' ORDER BY date DESC;
 
 SELECT date,symbol,ABS(open-close) AS change FROM aonetable ORDER BY change DESC 1;
 
-SELECT DISTINCT date,symbol,ABS(open-close) AS `change` FROM aonetable GROUP BY MAX(date) ORDER BY `change` DESC;
+SELECT DISTINCT date,symbol,ABS(open-close) AS `change` FROM aonetable GROUP BY MAX(change) ORDER BY date DESC;
+
+#WORKS
+SELECT DISTINCT date,symbol,ABS(open-close) AS `change` FROM aonetable ORDER BY `change` DESC; 
+
+SELECT DISTINCT date,symbol,ABS(open-close) AS `change` FROM aonetable GROUP BY date; 
+
+
+SELECT date, symbol, ABS(open - close) AS `change` FROM aonetable
+FROM (
+   SELECT TYPE, MIN(date) as mindate, 
+   FROM aonetable group by type
+) AS Q INNER JOIN anonetable as at ON at.type = Q.type and Q.date = x.mindate;
+
+
+SELECT date, symbol, ABS(open - close) AS `change` FROM ((SELECT ABS(open - close) AS `absallrows` FROM aonetable WHERE MAX(`absallrows`)) AS Q INNER JOIN aonetable AS at ON at.type = Q.type and Q.date = at.`absallrows`);
+
+(SELECT ABS(open - close) AS `absallrows` FROM aonetable GROUP BY `absallrows`) AS Q INNER JOIN aonetable AS at ON at.type = Q.type and Q.date = at.absallrows);
+
+(SELECT ABS(open - close) AS `absallrows` FROM aonetable GROUP BY `absallrows`) AS Q INNER JOIN aonetable AS at ON at.type = Q.type and Q.date = at.absallrows;
