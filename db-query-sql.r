@@ -40,4 +40,14 @@ SELECT date, symbol, ABS(open - close) AS `change` FROM ((SELECT ABS(open - clos
 
 (SELECT ABS(open - close) AS `absallrows` FROM aonetable GROUP BY `absallrows`) AS Q INNER JOIN aonetable AS at ON at.type = Q.type and Q.date = at.absallrows);
 
-(SELECT ABS(open - close) AS `absallrows` FROM aonetable GROUP BY `absallrows`) AS Q INNER JOIN aonetable AS at ON at.type = Q.type and Q.date = at.absallrows;
+SELECT ABS(open - close) AS `absallrows` FROM aonetable GROUP BY absallrows INNER JOIN aonetable AS at ON at.date = a.absallrows;
+
+SELECT ABS(open - close) AS `absallrows` FROM aonetable GROUP BY absallrows GROUP BY `absallrows`;
+
+SELECT dates,ABS(open - close) AS `absallrows` FROM aonetable AS dlist GROUP BY absallrows ORDER BY absallrows DESC;
+
+INNER JOIN aonetable AS at ON at.date = 
+
+DATE_FORMAT(date, '%c %d %Y')
+
+SELECT DISTINCT DATE_FORMAT(date, '%c %d %Y'), symbol, open, close;
